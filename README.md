@@ -1,5 +1,5 @@
 # TheKCommonSubstringProblem
-This repository includes an implementation of the algorithm of Hui [1] and two versions of the algorithm of Chrochemore et al. [2].
+This repository is used for a bachelor's thesis and includes an implementation of the algorithm of Hui [1] and two versions of the algorithm of Chrochemore et al. [2].
 For the implementation the following variation by Jannik Olbrich of the sdsl-lite-library [3] is used: https://gitlab.com/qwerzuiop/sdsl-lite-gsa.
 
 ## License
