@@ -209,7 +209,7 @@ Random data:
     }
 ```
 
-### Example 4 (1 E.coli bacterium splitted up in parts of length 1000):
+### Example Four (1 E.coli bacterium splitted up in parts of length 1000):
 DNA data:
 ```
     std::vector<std::string> inputstrings;
