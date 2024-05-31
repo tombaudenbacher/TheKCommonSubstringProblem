@@ -7,7 +7,7 @@ In addition to that the implementation of Union-Find is a variation of the Union
 This code is free software provided under the GNU General Public License (GPLv3). For more information see the [LICENSE](LICENSE.txt) file.
 
 ## Example Inputs
-The files used in the examples are either DNA data from: https://www.uni-ulm.de/compressed-debruijn-graph-data/ (used are the first 4 E.coli bacteria and the first 3 versions of the human chromosome 1) and modified so they don't contain the characters 'N* and '\n' anymore or random generated strings of upper case letters. The examples will always have one version with DNA data and one with random input data with the same length.
+The files used in the examples are either DNA data from: https://www.uni-ulm.de/compressed-debruijn-graph-data/ (used are the first 4 E.coli bacteria and the first 3 versions of the human chromosome 1) and modified so they don't contain the characters 'N* and '\n' anymore or random generated strings of upper case letters. The examples will always have one version with DNA data and one with random input data with the same length. If the examples are used for Hui's algorithm "ChrochemoreEtAl" has to be changed to "Hui" when creating the object that is used to run the algorithm.
 
 ### Example One (3 E.coli bacteria):
 DNA data:
