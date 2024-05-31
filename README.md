@@ -1,6 +1,7 @@
 # The k-common substring problem
 This repository is used for a bachelor's thesis and includes an implementation of the algorithm of Hui [1] and two versions of the algorithm of Chrochemore et al. [2].
-For the implementation the following variation by Jannik Olbrich of the sdsl-lite-library [3] is used: https://gitlab.com/qwerzuiop/sdsl-lite-gsa.
+For the implementation the following variation by Jannik Olbrich of the sdsl-lite-library [3] is used: https://gitlab.com/qwerzuiop/sdsl-lite-gsa. 
+In addition to that the implementation of Union-Find is a variation of the Union-Find datastructure that is used by Schöning [4].
 
 ## License
 This code is free software provided under the GNU General Public License (GPLv3). For more information see the [LICENSE](LICENSE.txt) file.
@@ -351,3 +352,4 @@ Random data:
 [1] L.C.K. Hui. „Color Set Size Problem with Applications to String Matching“. In: Combinatorial Pattern Matching. Springer Berlin Heidelberg, 1992, S. 230–243.  
 [2] M. Crochemore et al. „The longest common substring problem“. In: Mathematical Structures in Computer Science (2015).  
 [3] S. Gog et al. „From Theory to Practice: Plug and Play with Succinct Data Structures“. In: 13th International Symposium on Experimental Algorithms, (SEA 2014). 2014, S. 326–337.  
+[4] U. Schöning. „Algorithmik“. In: Spektrum Akademischer Verlag, 2001, S. 199–201.  
