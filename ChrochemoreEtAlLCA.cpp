@@ -50,14 +50,10 @@ class ChrochemoreEtAl{
         //+2 um für den Index-Shift und den extra Knoten von \0 zu kompensieren
         vorhergehendesBlatt.resize(C.size()+1, -1);
         teilstring.resize(C.size()+2, -1);
-
-        std::cout << "building tree" << std::endl;
         
         //Suffix-Baum erzeugen
         cst_t cst;
 	    sdsl::construct_im(cst, text, 1, sdsl::TEXT_COLLECTION);
-
-        std::cout << "tree got built" << std::endl;
 
         css.resize(cst.nodes(), -1);
         farbe.resize(cst.nodes(), -1);
