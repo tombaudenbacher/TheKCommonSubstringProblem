@@ -348,9 +348,6 @@ Random data:
     }
 ```
 
-### Downloading The Files
-Since the chromosome data is bigger than 100MB, GitHub doesn't allow to simply upload them. Instead they are uploaded as lfs files. To download the files follow the steps here: https://gist.github.com/fkraeutli/66fa741d9a8c2a6a238a01d17ed0edc5
-
 ## Bibliography
 [1] L.C.K. Hui. „Color Set Size Problem with Applications to String Matching“. In: Combinatorial Pattern Matching. Springer Berlin Heidelberg, 1992, S. 230–243.  
 [2] M. Crochemore et al. „The longest common substring problem“. In: Mathematical Structures in Computer Science (2015).  
