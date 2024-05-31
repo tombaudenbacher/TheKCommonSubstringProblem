@@ -347,7 +347,7 @@ Random data:
     }
 ```
 
-# Bibliography
+## Bibliography
 [1] L.C.K. Hui. „Color Set Size Problem with Applications to String Matching“. In: Combinatorial Pattern Matching. Springer Berlin Heidelberg, 1992, S. 230–243.  
 [2] M. Crochemore et al. „The longest common substring problem“. In: Mathematical Structures in Computer Science (2015).  
 [3] S. Gog et al. „From Theory to Practice: Plug and Play with Succinct Data Structures“. In: 13th International Symposium on Experimental Algorithms, (SEA 2014). 2014, S. 326–337.  
