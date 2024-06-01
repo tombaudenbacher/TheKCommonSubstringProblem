@@ -147,11 +147,13 @@ DNA data:
     std::getline(file, Ecoli1);
 
     int index = 0;
+    int counter = 1;
 
     std::list<string> parts;
     for(int i=50000; i<Ecoli1.size(); i+=counter*50000){
         parts.push_back(Ecoli1.substr(index, i-index));
         index =  i;
+        counter++;
     }
 
     inputstrings.resize(parts.size());
@@ -183,11 +185,13 @@ Random data:
     std::getline(fileR, Random1);
 
     int index = 0;
+    int counter = 1;
 
     std::list<string> partsR;
     for(int i=50000; i<Random1.size(); i+=counter*50000){
         partsR.push_back(Random1.substr(index, i-index));
         index =  i;
+        counter++;
     }
 
     inputstrings.resize(partsR.size());
