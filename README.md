@@ -43,8 +43,6 @@ Random data:
 ```
     std::vector<std::string> inputstrings(3);
 
-    inputstrings.resize(3);
-
     std::string Random1;
     std::string Random2;
     std::string Random3;
