@@ -1,13 +1,14 @@
 # The k-common substring problem
-This repository is used for a bachelor's thesis and includes an implementation of the algorithm of Hui [1] and two versions of the algorithm of Chrochemore et al. [2].
-For the implementation the following variation by Jannik Olbrich of the sdsl-lite-library [3] is used: https://gitlab.com/qwerzuiop/sdsl-lite-gsa. 
-In addition to that the implementation of Union-Find is a variation of the Union-Find datastructure that is used by Schöning [4].
+This repository is used for a bachelor's thesis and includes an implementation of the algorithm presented by Hui [1] and two versions of the algorithm presented by Chrochemore et al. [2].
+The following version of the sdsl-lite-library [3] by Jannik Olbrich is used for the implementation of the algorithms: https://gitlab.com/qwerzuiop/sdsl-lite-gsa.  
+In addition to that the implementation of the Union-Find-datastructure is a variation of the Union-Find datastructure presented by Schöning [4].
 
 ## License
 This code is free software provided under the GNU General Public License (GPLv3). For more information see the [LICENSE](LICENSE.txt) file.
 
 ## Example Inputs
-The files used in the examples are either DNA data from: https://www.uni-ulm.de/compressed-debruijn-graph-data/ (used are the first 4 E.coli bacteria and the first 3 versions of the human chromosome 1) and modified so they don't contain the characters 'N* and '\n' anymore or random generated strings of upper case letters. The examples will always have one version with DNA data and one with random input data with the same length. If the examples are used for Hui's algorithm "ChrochemoreEtAl" has to be changed to "Hui" when creating the object that is used to run the algorithm.
+The files used in the examples are the first four E.coli bacteria and the first three versions of the human chromosome 1 from: https://www.uni-ulm.de/compressed-debruijn-graph-data/. They are modified so they don't contain the characters 'N' and '\n' anymore. In addition to that random generated strings of upper case letters with the same length as the DNA data are used for the examples. The examples will always have one version with DNA data and one with random data.  
+If the examples are used for Hui's algorithm "ChrochemoreEtAl" has to be changed to "Hui" when creating the object that is used to run the algorithm.
 
 ### Example One (3 E.coli bacteria):
 DNA data:
@@ -18,11 +19,11 @@ DNA data:
     std::string Ecoli2;
     std::string Ecoli3;
 
-    std::ifstream file("Ecoli1Output.fasta");
+    std::ifstream file("Ecoli1.fasta");
     std::getline(file, Ecoli1);
-    std::ifstream file2("Ecoli2Output.fasta");
+    std::ifstream file2("Ecoli2.fasta");
     std::getline(file2, Ecoli2);
-    std::ifstream file3("Ecoli3Output.fasta");
+    std::ifstream file3("Ecoli3.fasta");
     std::getline(file3, Ecoli3);
 
     inputstrings[0] = Ecoli1;
@@ -48,11 +49,11 @@ Random data:
     std::string Random2;
     std::string Random3;
 
-    std::ifstream fileR("RandomEcoli1Length.txt");
+    std::ifstream fileR("RandomEcoli1.txt");
     std::getline(fileR, Random1);
-    std::ifstream fileR2("RandomEcoli2Length.txt");
+    std::ifstream fileR2("RandomEcoli2.txt");
     std::getline(fileR2, Random2);
-    std::ifstream fileR3("RandomEcoli3Length.txt");
+    std::ifstream fileR3("RandomEcoli3.txt");
     std::getline(fileR3, Random3);
 
     inputstrings[0] = Random1;
@@ -78,11 +79,11 @@ DNA data:
     std::string Ecoli2;
     std::string Ecoli3;
 
-    std::ifstream file("Ecoli1Output.fasta");
+    std::ifstream file("Ecoli1.fasta");
     std::getline(file, Ecoli1);
-    std::ifstream file2("Ecoli2Output.fasta");
+    std::ifstream file2("Ecoli2.fasta");
     std::getline(file2, Ecoli2);
-    std::ifstream file3("Ecoli3Output.fasta");
+    std::ifstream file3("Ecoli3.fasta");
     std::getline(file3, Ecoli3);
 
     inputstrings.resize(6);
@@ -111,11 +112,11 @@ Random data:
     std::string Random2;
     std::string Random3;
 
-    std::ifstream fileR("RandomEcoli1Length.txt");
+    std::ifstream fileR("RandomEcoli1.txt");
     std::getline(fileR, Random1);
-    std::ifstream fileR2("RandomEcoli2Length.txt");
+    std::ifstream fileR2("RandomEcoli2.txt");
     std::getline(fileR2, Random2);
-    std::ifstream fileR3("RandomEcoli3Length.txt");
+    std::ifstream fileR3("RandomEcoli3.txt");
     std::getline(fileR3, Random3);
 
     inputstrings.resize(6);
@@ -144,7 +145,7 @@ DNA data:
 
     std::string Ecoli1;
 
-    std::ifstream file("Ecoli1Output.fasta");
+    std::ifstream file("Ecoli1.fasta");
     std::getline(file, Ecoli1);
 
     int index = 0;
@@ -180,7 +181,7 @@ Random data:
 
     std::string Random1;
 
-    std::ifstream fileR("RandomEcoli1Length.txt");
+    std::ifstream fileR("RandomEcoli1.txt");
     std::getline(fileR, Random1);
 
     int index = 0;
@@ -217,7 +218,7 @@ DNA data:
 
     std::string Ecoli1;
 
-    std::ifstream file("Ecoli1Output.fasta");
+    std::ifstream file("Ecoli1.fasta");
     std::getline(file, Ecoli1);
 
     int index = 0;
@@ -255,7 +256,7 @@ Random data:
 
     std::string Random1;
 
-    std::ifstream fileR("RandomEcoli1Length.txt");
+    std::ifstream fileR("RandomEcoli1.txt");
     std::getline(fileR, Random1);
 
     int index = 0;
@@ -296,11 +297,11 @@ DNA data:
     std::string Chromosom2;
     std::string Chromosom3;
 
-    std::ifstream file("Chromosom1Output.fa");
+    std::ifstream file("Chromosom1.fa");
     std::getline(file, Chromosom1);
-    std::ifstream file2("Chromosom2Output.fa");
+    std::ifstream file2("Chromosom2.fa");
     std::getline(file2, Chromosom2);
-    std::ifstream file3("Chromosom3Output.fa");
+    std::ifstream file3("Chromosom3.fa");
     std::getline(file3, Chromosom3);
 
     inputstrings[0] = Chromosom1;
@@ -326,11 +327,11 @@ Random data:
     std::string Random2;
     std::string Random3;
 
-    std::ifstream file("RandomChromosom1Length.txt");
+    std::ifstream file("RandomChromosom1.txt");
     std::getline(file, Random1);
-    std::ifstream file2("RandomChromosom2Length.txt");
+    std::ifstream file2("RandomChromosom2.txt");
     std::getline(file2, Random2);
-    std::ifstream file3("RandomChromosom3Length.txt");
+    std::ifstream file3("RandomChromosom3.txt");
     std::getline(file3, Random3);
 
     inputstrings[0] = Random1;
@@ -349,7 +350,7 @@ Random data:
 ```
 
 ## Bibliography
-[1] L.C.K. Hui. „Color Set Size Problem with Applications to String Matching“. In: Combinatorial Pattern Matching. Springer Berlin Heidelberg, 1992, S. 230–243.  
+[1] L.C.K. Hui. „Color Set Size Problem with Applications to String Matching“. In: Combinatorial Pattern Matching. Springer Berlin Heidelberg, 1992, pp. 230–243.  
 [2] M. Crochemore et al. „The longest common substring problem“. In: Mathematical Structures in Computer Science (2015).  
-[3] S. Gog et al. „From Theory to Practice: Plug and Play with Succinct Data Structures“. In: 13th International Symposium on Experimental Algorithms, (SEA 2014). 2014, S. 326–337.  
-[4] U. Schöning. „Algorithmik“. In: Spektrum Akademischer Verlag, 2001, S. 199–201.  
+[3] S. Gog et al. „From Theory to Practice: Plug and Play with Succinct Data Structures“. In: 13th International Symposium on Experimental Algorithms, (SEA 2014). 2014, pp. 326–337.  
+[4] U. Schöning. „Algorithmik“. In: Spektrum Akademischer Verlag, 2001, pp. 199–201.  
