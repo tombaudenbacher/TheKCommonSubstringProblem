@@ -286,7 +286,7 @@ Random data:
     result = c.KGTP(inputstrings);
 
     for(int i=0; i<result.size(); i++){
-        std::cout << i+1 << ": " << result[i].size() << std::endl;
+        std::cout << i+1 << ": " << result[i] << std::endl;
     }
 ```
 
