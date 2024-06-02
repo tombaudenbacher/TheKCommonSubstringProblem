@@ -18,7 +18,7 @@ using node_t = sdsl::int_vector_size_type;
 
 class ChrochemoreEtAl{
 
-    std::vector<int> css;
+    std::vector<int> fmm;
     std::vector<int> stringlänge;
     std::unordered_map<int, int> repräsentant;
     std::vector<int> farbe;
@@ -60,15 +60,15 @@ class ChrochemoreEtAl{
         cst_t cst;
 	    sdsl::construct_im(cst, text, 1, sdsl::TEXT_COLLECTION);
 
-        css.resize(cst.nodes(), -1);
+        fmm.resize(cst.nodes(), -1);
         farbe.resize(cst.nodes(), -1);
         stringlänge.resize(cst.nodes(), -1);
 
         //Union-Find-Array initialisieren
         ufInitialisieren(cst);
 
-        //CSSP lösen und direkt die Knoten für die längsten Teilstrings berechnen#
-        cssWerte(cst, cst.root());
+        //FMMP lösen und direkt die Knoten für die längsten Teilstrings berechnen#
+        fmmWerte(cst, cst.root());
 
         //genau -> mindestens
         //Es muss aufgrund des extra Knoten zusätzlich noch 1 von size() abgezogen werden
@@ -80,16 +80,16 @@ class ChrochemoreEtAl{
         //Ausgabestrings suchen
         std::vector<std::string> output(C.size());
         //-1, aufgrund des extra Knoten
-        //teilstring[i] kann -1 sein, da der Wurzelknoten, aufgrund des extra Knoten einen um 1 höheren css-Wert hat, als er haben sollte
+        //teilstring[i] kann -1 sein, da der Wurzelknoten, aufgrund des extra Knoten einen um 1 höheren fmm-Wert hat, als er haben sollte
         for(int i=1; i<teilstring.size()-1; i++){
             output[i-1] = labelAuslesen(cst, cst.inv_id(teilstring[i]));
         }
         return output;
     }
 
-    void cssWerte(cst_t& cst, node_t u){
+    void fmmWerte(cst_t& cst, node_t u){
         makeSet(cst.id(u));
-        css[cst.id(u)] = 0;
+        fmm[cst.id(u)] = 0;
         if(cst.is_leaf(u)){
             farbeBerechnen(cst, u);
             stringlänge[cst.id(u)] = tiefeEinesBlattes(cst, u);
@@ -97,19 +97,19 @@ class ChrochemoreEtAl{
             int vorfahre = findRepresentative(vorhergehendesBlatt[colorOfLeaf]);
             vorhergehendesBlatt[colorOfLeaf] = cst.id(u);
             if(vorfahre != -1){
-                css[vorfahre] = css[vorfahre] - 1;
+                fmm[vorfahre] = fmm[vorfahre] - 1;
             }
-            css[cst.id(u)] = 1;
+            fmm[cst.id(u)] = 1;
         } else {
             stringlänge[cst.id(u)] = cst.depth(u);
             for(auto v : cst.children(u)){
-                cssWerte(cst, v);
+                fmmWerte(cst, v);
                 unionSets(find(cst.id(u)), find(cst.id(v)));
-                css[cst.id(u)] = css[cst.id(u)] + css[cst.id(v)];
+                fmm[cst.id(u)] = fmm[cst.id(u)] + fmm[cst.id(v)];
             }
         }
-        if(teilstring[css[cst.id(u)]] == -1 || stringlänge[cst.id(u)] > stringlänge[teilstring[css[cst.id(u)]]]){
-            teilstring[css[cst.id(u)]] = cst.id(u);
+        if(teilstring[fmm[cst.id(u)]] == -1 || stringlänge[cst.id(u)] > stringlänge[teilstring[fmm[cst.id(u)]]]){
+            teilstring[fmm[cst.id(u)]] = cst.id(u);
         }
     }
 

@@ -20,7 +20,7 @@ using node_t = sdsl::int_vector_size_type;
 
 class Hui{
 
-    std::vector<int> css;
+    std::vector<int> fmm;
     std::vector<int> stringlänge;
     std::vector<int> farbe;
     std::vector<int> blattAnzahl;
@@ -62,7 +62,7 @@ class Hui{
         cst_t cst;
 	    sdsl::construct_im(cst, text, 1, sdsl::TEXT_COLLECTION);
 
-        css.resize(cst.nodes(), -1);
+        fmm.resize(cst.nodes(), -1);
         farbe.resize(cst.nodes(), -1);
         stringlänge.resize(cst.nodes(), -1);
         blattAnzahl.resize(cst.nodes(), -1);
@@ -71,11 +71,11 @@ class Hui{
         GWert.resize(cst.nodes(), -1);
 
 
-        //CSSP lösen und direkt die Knoten für die längsten Teilstrings berechnen
+        //FMMP lösen und direkt die Knoten für die längsten Teilstrings berechnen
         blattAnzahlUndBlattListe(cst, cst.root());
         vorhergehendeBlätter(cst, C.size());
         gWerte(cst);
-        cssUndGWerte(cst, cst.root());
+        fmmUndGWerte(cst, cst.root());
 
         //genau -> mindestens
         //Es muss aufgrund des extra Knoten zusätzlich noch 1 von size() abgezogen werden
@@ -88,7 +88,7 @@ class Hui{
         //Ausgabestrings suchen
         std::vector<std::string> output(C.size());
         //-1, aufgrund des extra Knoten
-        //teilstring[i] kann -1 sein, da der Wurzelknoten, aufgrund des extra Knoten einen um 1 höheren css-Wert hat, als er haben sollte
+        //teilstring[i] kann -1 sein, da der Wurzelknoten, aufgrund des extra Knoten einen um 1 höheren fmm-Wert hat, als er haben sollte
         for(int i=1; i<teilstring.size()-1; i++){
             if(teilstring[i] == -1){
                 output[i-1] = "";
@@ -130,7 +130,7 @@ class Hui{
         }
     }
 
-    int cssUndGWerte(cst_t& cst, node_t u){
+    int fmmUndGWerte(cst_t& cst, node_t u){
         if(cst.is_leaf(u)){
             stringlänge[cst.id(u)] = tiefeEinesBlattes(cst, u);
             if(teilstring[1] == -1 || stringlänge[cst.id(u)] > stringlänge[teilstring[1]]){
@@ -141,12 +141,12 @@ class Hui{
         stringlänge[cst.id(u)] = cst.depth(u);
         GWert[cst.id(u)] = gWert[cst.id(u)];
 		for(auto v : cst.children(u)){
-            int childValue = cssUndGWerte(cst, v);
+            int childValue = fmmUndGWerte(cst, v);
             GWert[cst.id(u)] = GWert[cst.id(u)] + childValue;
         }
-        css[cst.id(u)] = blattAnzahl[cst.id(u)] - GWert[cst.id(u)];
-        if(teilstring[css[cst.id(u)]] == -1 || stringlänge[cst.id(u)] > stringlänge[teilstring[css[cst.id(u)]]]){
-            teilstring[css[cst.id(u)]] = cst.id(u);
+        fmm[cst.id(u)] = blattAnzahl[cst.id(u)] - GWert[cst.id(u)];
+        if(teilstring[fmm[cst.id(u)]] == -1 || stringlänge[cst.id(u)] > stringlänge[teilstring[fmm[cst.id(u)]]]){
+            teilstring[fmm[cst.id(u)]] = cst.id(u);
         }
         return GWert[cst.id(u)];
 	}
